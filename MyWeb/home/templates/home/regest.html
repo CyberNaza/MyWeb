@@ -1,0 +1,116 @@
+{% extends 'home/base.html' %}
+
+
+{% block content%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 50%;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 18px;
+      border-radius: 5px;
+      border: none;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <form action="{% url 'Regestration' %}" method="post">
+      {% csrf_token %}
+      <h2>Registration Form</h2>
+      <div class="input-group">
+        
+        <input type="text" id="username" name="User_name" required placeholder="Username">
+      </div>
+      <div class="input-group">
+        
+        <input type="email" id="email" name="email" required placeholder="Email">
+      </div>
+      <div class="input-group">
+        
+        <input type="password" id="password" name="passwd" required
+        placeholder="password">
+      </div>
+      <div class="input-group">
+                <input type="password" id="confirm_passwd" name="confirm_passwd" required
+        placeholder="password">
+        
+
+      </div>
+      <div class="input-group">
+        <button type="submit">Register</button>
+      </div>
+            {% if error_message %}
+                <p style="color: red;">{{ error_message }}</p>
+            {% endif %}
+
+            {% if error_message_1 %}
+                <p style="color: green;">{{ error_message }}</p>
+            {% endif %}
+
+            
+    </form>
+  </div>
+</body>
+</html>
+
+
+
+
+{% endblock %}
